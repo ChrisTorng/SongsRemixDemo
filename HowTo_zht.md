@@ -39,6 +39,9 @@
 
 ### 首次發佈
   1. git commit/push
+  2. 開啟自己的 GitHub 曲目庫網頁 - Settings - Pages - Branch - none - main - Save
+  3. Visit site 開啟發佈網站
+  4. 發佈執行進度可到 Actions 中檢視
 
 ## 之後每一次加曲目
 
@@ -68,3 +71,6 @@
   5. 依第一次本機測試方法確認
 
 ### 發佈更新
+  1. git commit/push
+  2. 發行進度可到 自己的 GitHub 曲目庫網頁 - Actions 中檢視
+  3. 開啟發佈成果網頁
