@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>範例曲目庫 - SongsRemix</title>
+    <title>SongsRemix</title>
     <style>
         html, body {
             height: 100%;
@@ -24,9 +24,18 @@
 <body>
     <script>
         var songsRemixUrl = 'https://christorng.github.io/SongsRemix/src/';
+        // var songsRemixUrl = 'http://localhost:3000/';
         var iframe = document.createElement('iframe');
         iframe.src = `${songsRemixUrl}?songsList=${location.href}`;
         document.body.appendChild(iframe);
+
+        window.addEventListener('message', function(event) {
+            if (event.origin === new URL(songsRemixUrl).origin &&
+                event.data.type === 'SET_TITLE') {
+                document.title = `${event.data.title} - ${document.title}`;
+            }
+        });
+
     </script>
 </body>
 </html>
