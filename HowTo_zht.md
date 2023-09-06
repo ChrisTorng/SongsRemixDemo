@@ -5,9 +5,9 @@
 
 ### 第一次預備
   1. 安裝必要工具
-  2. 下載範例曲目庫
+  2. 建立自己的曲目庫
   3. 本機測試
-  4. 首次發佈
+  4. 修改並發佈
 
 ### 之後每一次加曲目
   1. 取得原始音檔
@@ -29,22 +29,36 @@
     3. CHOOSE PROCESS METHOD: Demucs; CHOOSE DEMUCS MODEL: v4 | htdemucs_6s
   * 安裝 [Python](https://www.python.org/)
   * 安裝 [Node.js](https://nodejs.org/)
+    *  於命令列執行 `npm install -g http-server` 安裝網頁伺服器
+
   * 安裝 [Git](https://git-scm.com/)
 
-### 2. 下載範例曲目庫
-
+### 2. 建立自己的曲目庫
+  1. 由 [SongsRemixDemo](https://github.com/ChrisTorng/SongsRemixDemo) - Use this template - Create a new repository
+  2. Reposity name 輸入欲建立之曲目庫的英數代碼名稱 - Create repository
+  3. 綠色 Code 下拉 - 按 複製 圖示
+  4. 開啟命令列，切換到欲建立曲目庫之上層目錄
+  5. 執行 `git clone ` 後面貼上目標網址，格式為 `https://github.com/(自己 GitHub 帳號)/(自己曲目庫代碼).git`
 
 ### 3. 本機測試
-  1. 於曲目庫資料夾開啟命令列
-  2. (僅第一次) 執行 `npm install -g http-server` 安裝
-  3. 執行 `npx http-server --cors -p 3001` 啟動本機網站，或於 Windows 中執行 `run`
-  4. 開啟 [http://localhost:3001](http://localhost:3001) 檢視成果
+  1. 命令列 `cd` 進入曲目庫目錄
+  2. 執行 `npx http-server --cors -p 3001` 啟動本機網站，或於 Windows 中執行 `run`
+  3. 開啟 [http://localhost:3001](http://localhost:3001) 檢視成果
 
-### 4. 首次發佈
-  1. 再次於曲目庫資料夾開啟命令列，依序執行 `git add .`、`git commit -m "Update"` 及 `git push origin main`，或於 Windows 上執行 `push`
-  2. (僅第一次) 設定自動發佈: 開啟自己的 GitHub 曲目庫網頁 - Settings - Pages - Branch - none - main - Save
-  3. Visit site 開啟發佈網站
-  4. 發佈執行進度可到 Actions 中檢視
+### 4. 修改並發佈
+  1. 以純文字編輯器開啟 songsList.json
+  2. 修改 `title`/`titleUrl` 欄位為自己的曲目庫名稱及對應網址後存檔
+  3. 重新整理網頁，確認名稱與網址正確
+  4. 再於曲目庫資料夾開啟新的命令列視窗，執行
+     ```
+     git add .
+     git commit -m "Update"
+     git push origin main
+     ```
+     或於 Windows 上執行 `push`，以將本機修改推送到 GitHub 網站上
+  5. 設定自動發佈: 開啟自己的 GitHub 曲目庫網頁 - 上排 Settings - 左側 Pages - Branch - none - main - Save
+  6. 到上排 Actions 中檢視進度，等待顯示綠燈
+  7. 上排 Settings - 左側 Pages - Visit site 開啟發佈網站
 
 ## 之後每一次加曲目
 
@@ -70,8 +84,15 @@
   1. 編輯曲目庫中 songsList.json
   2. 複製/修改 groups 項目
   3. 更新 `subTitle`。`subTitleUrl` 可事後增加，目前還沒有則清空內容字串
-  4. 修改各曲目之 `name` 必須符合資料夾名稱，`youtubeId` 由 YouTube 網址中之 `v=` 參數後取得 
+  4. 修改各曲目之 `name` 必須符合資料夾名稱，`youtubeId` 由 YouTube 網址中之 `v=` 參數後取得
+  5. 同第一次本機測試方法確認
 
-### 6. 測試與發佈
-  1. 同第一次本機測試方法確認，但不需安裝
-  2. 同首次發佈，但不需再設定自動發佈
+### 6. 發佈更新
+  1. 於曲目庫資料夾開啟命令列，執行
+     ```
+     git add .
+     git commit -m "Update"
+     git push origin main
+     ```
+     或於 Windows 上執行 `push`
+  2. 待 Actions 中執行完畢，開啟線上曲目庫網站確認
