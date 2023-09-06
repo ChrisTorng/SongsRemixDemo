@@ -36,13 +36,13 @@
 
 ### 3. 本機測試
   1. 於範例曲目庫資料夾開啟命令列
-  2. 執行 `npm install -g http-server` 安裝 (只需安裝一次)
+  2. (第一次) 執行 `npm install -g http-server` 安裝
   3. 執行 `npx http-server --cors -p 3001` 啟動本機網站，或於 Windows 中執行 `run.cmd`
   4. 開啟 [http://localhost:3001](http://localhost:3001) 檢視成果
 
 ### 4. 首次發佈
   1. git commit/push
-  2. 開啟自己的 GitHub 曲目庫網頁 - Settings - Pages - Branch - none - main - Save
+  2. (第一次) 設定自動發佈: 開啟自己的 GitHub 曲目庫網頁 - Settings - Pages - Branch - none - main - Save
   3. Visit site 開啟發佈網站
   4. 發佈執行進度可到 Actions 中檢視
 
@@ -71,9 +71,8 @@
   2. 複製/修改 groups 項目
   3. 更新 `subTitle`。`subTitleUrl` 可事後增加，目前還沒有則清空內容字串
   4. 修改各曲目之 `name` 必須符合資料夾名稱，`youtubeId` 由 YouTube 網址中之 `v=` 參數後取得 
-  5. 依第一次本機測試方法確認
+  5. 
 
-### 6. 發佈更新
-  1. git commit/push
-  2. 發行進度可到 自己的 GitHub 曲目庫網頁 - Actions 中檢視
-  3. 開啟發佈成果網頁
+### 6. 測試與發佈
+  1. 同第一次本機測試方法確認，但不需安裝
+  2. 同首次發佈，但不需再設定自動發佈

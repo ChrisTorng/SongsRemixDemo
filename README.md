@@ -8,4 +8,4 @@
 
 之後每一次加曲目的基本流程是取得原始音檔、製作分軌及波形圖、加入曲目資料、發佈更新。
 
-詳細流程請見 [如何自行製作曲目庫](HowTo_zht.md)。
+詳細流程請見 [如何自行製作曲目庫](https://github.com/ChrisTorng/SongsRemixDemo/blob/main/HowTo_zht.md)。
