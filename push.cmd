@@ -1,3 +1,3 @@
 git add .
-git commit -m "更新曲目庫。"
+git commit -m "Update"
 git push origin main
