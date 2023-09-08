@@ -24,9 +24,12 @@
 ### 1. 安裝必要工具
   * 安裝 [youtube_dl](https://oleksis.github.io/youtube-dl-gui/)
   * 安裝 [Ultimate Vocal Remover](https://github.com/anjok07/ultimatevocalremovergui)
-    1. 左下扳手圖示 - Additional Settings - Mp3 Bitrate: 128k (與來源檔案一致)
-    2. Download Center - 選取 Demucs - 下拉選取 Demucs v4 | htdemucs_6s - 按下載圖示
-    3. CHOOSE PROCESS METHOD: Demucs; CHOOSE DEMUCS MODEL: v4 | htdemucs_6s
+    1. 選擇 mp3
+    2. 左下扳手圖示 - Additional Settings - Mp3 Bitrate: 160k
+
+       實測 96k/128k 轉出來的音檔時間長度都不正確，160k/320k 則正常。來源音檔是 128k，故此處使用 160k。
+    3. Download Center - 選取 Demucs - 下拉選取 Demucs v4 | htdemucs_6s - 按下載圖示
+    4. CHOOSE PROCESS METHOD: Demucs; CHOOSE DEMUCS MODEL: v4 | htdemucs_6s
   * 安裝 [Python](https://www.python.org/)
   * 安裝 [Node.js](https://nodejs.org/)
     *  於命令列執行 `npm install -g http-server` 安裝網頁伺服器
@@ -38,7 +41,7 @@
   2. Reposity name 輸入欲建立之曲目庫的英數代碼名稱 - Create repository
   3. 綠色 Code 下拉 - 按 複製 圖示
   4. 開啟命令列，切換到欲建立曲目庫之上層目錄
-  5. 執行 `git clone ` 後面貼上目標網址，格式為 `https://github.com/(自己 GitHub 帳號)/(自己曲目庫代碼).git`
+  5. `git clone` 後面貼上目標網址再執行，格式為 `https://github.com/(自己 GitHub 帳號)/(自己曲目庫代碼).git`
 
 ### 3. 本機測試
   1. 命令列 `cd` 進入曲目庫目錄
@@ -63,7 +66,7 @@
 ## 之後每一次加曲目
 
 ### 1. 取得原始音檔
-  1. 執行 youtube_dl - 輸入所有 YouTube 網址 - 選擇輸出資料夾為曲目庫資料夾 - 選擇 mp3 - Add - 右下角 Start
+  1. 執行 youtube_dl - 貼上所有 YouTube 網址 - ... - 選擇輸出資料夾為曲目庫資料夾 - default - 選擇 mp3 - Add - 右下角 Start
   2. 將所有來源 mp3 檔名變更為預定顯示的文字
 
 ### 2. 製作分軌
@@ -74,15 +77,20 @@
   5. Start Processing
 
 ### 3. 檔案搬移與更名
-  2. 於曲目庫資料夾開啟命令列
-  3. 執行 `python SongsRename.py`，它會將目前資料夾中所有 mp3 檔，依曲目檔名自動搬移至新建立之資料夾，並僅留樂器名稱檔名 (必須全小寫，不含複數結尾 s)，來源檔案則改名為 original.mp3
+  1. 於曲目庫資料夾開啟命令列
+  2. 執行 `python SongsRename.py`
+  
+  它會將目前資料夾中所有 mp3 檔，依曲目檔名自動搬移至新建立之資料夾，並僅留樂器名稱檔名 (必須全小寫，不含複數結尾 s)，來源檔案則改名為 original.mp3
 
 ### 4. 製作波形圖
-  執行 `python waveform.py`，它會自動搜尋所有子資料夾下所有 mp3 未有對應 png 檔者，自動建立對應波形圖
+  執行 `python waveform.py`
+  
+  它會自動搜尋所有子資料夾下所有 mp3 未有對應 png 檔者，自動建立對應波形圖
 
 ### 5. 加入曲目資料
-  1. 編輯曲目庫中 songsList.json
-  2. 複製/修改 groups 項目
+  第 2 步 製作分軌 需要跑一些時間，建議可以同步進行這個項目。
+  1. 編輯曲目庫中 `songsList.json`
+  2. 複製/修改 `groups` 項目
   3. 更新 `subTitle`。`subTitleUrl` 可事後增加，目前還沒有則清空內容字串
   4. 修改各曲目之 `name` 必須符合資料夾名稱，`youtubeId` 由 YouTube 網址中之 `v=` 參數後取得
   5. 同第一次本機測試方法確認
@@ -96,3 +104,8 @@
      ```
      或於 Windows 上執行 `push`
   2. 待 Actions 中執行完畢，開啟線上曲目庫網站確認
+
+### 溫馨提醒
+  恭喜完成建立自己的曲目庫。請發 [Issue](https://github.com/ChrisTorng/SongsRemix/issues) 通知我加入 [SongsRemix](https://github.com/ChrisTorng/SongsRemix) 曲目庫清單。也方便後續若有功能異動，任何不相容變動等，可以預先通知作因應。
+
+  若遇到任何問題，或有功能需求都可發 [Issue](https://github.com/ChrisTorng/SongsRemix/issues)。也歡迎任何貢獻，包括程式、畫面與教學文件等。未來計畫請參見 [SongsRemix](https://github.com/ChrisTorng/SongsRemix)。
