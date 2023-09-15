@@ -1,5 +1,7 @@
 # SongsRemix 如何自行製作曲目庫
 
+[此文最新版本在 SongsRemixDemo](https://github.com/ChrisTorng/SongsRemixDemo/blob/main/HowTo_zht.md) 上。
+
 ## 簡介
   SongsRemix 分軌網站主功能均由原作者線上直接提供，功能有改善亦會自動更新。自行製作之曲目庫只需製作維護自己的曲目檔案及清單。
 
