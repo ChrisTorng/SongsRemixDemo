@@ -5,6 +5,8 @@
 ## 簡介
   SongsRemix 分軌網站主功能均由原作者線上直接提供，功能有改善亦會自動更新。自行製作之曲目庫只需製作維護自己的曲目檔案及清單。
 
+  以下安裝相關步驟若有問題，請先至各官網檢視詳細說明。若其他操作步驟有問題，請發 [Issue](https://github.com/ChrisTorng/SongsRemixDemo/issues) 通知我。
+
 ### 第一次預備
   1. 安裝必要工具
   2. 建立自己的曲目庫
@@ -24,26 +26,34 @@
 ## 第一次預備
 
 ### 1. 安裝必要工具
-  * 安裝 [youtube_dl](https://oleksis.github.io/youtube-dl-gui/)
-  * 安裝 [Ultimate Vocal Remover](https://github.com/anjok07/ultimatevocalremovergui)
-    1. 選擇 mp3
-    2. 左下扳手圖示 - Additional Settings - Mp3 Bitrate: 160k
-
-       實測 96k/128k 轉出來的音檔時間長度都不正確，160k/320k 則正常。來源音檔是 128k，故此處使用 160k。
-    3. Download Center - 選取 Demucs - 下拉選取 Demucs v4 | htdemucs_6s - 按下載圖示
-    4. CHOOSE PROCESS METHOD: Demucs; CHOOSE DEMUCS MODEL: v4 | htdemucs_6s
-  * 安裝 [Python](https://www.python.org/)
-  * 安裝 [Node.js](https://nodejs.org/)
+  * 以下安裝相關步驟若有問題，請先至各官網檢視詳細說明
+  * 安裝 [Python](https://www.python.org/) (工具執行環境)
+  * 安裝 [Node.js](https://nodejs.org/) (網頁伺服器)
     *  於命令列執行 `npm install -g http-server` 安裝網頁伺服器
 
-  * 安裝 [Git](https://git-scm.com/)
+  * 安裝 [Git](https://git-scm.com/) (上傳更新版本)
+  * 安裝 [yt-dlg](https://oleksis.github.io/youtube-dl-gui/) (下載音檔)
+  * 安裝分軌工具，以下二擇一:
+    * 命令列 [Demucs](https://github.com/facebookresearch/demucs#requirements) (支援各 OS)
+      1. 若無 4GB VRAM 以上 GPU ，則 `pip install demucs --user`
+      2. 若有，請詳細看各 OS 之安裝步驟
+
+    * [Ultimate Vocal Remover](https://github.com/anjok07/ultimatevocalremovergui) (Windows 圖形介面)
+      1. 安裝完成後執行，選擇 mp3
+      2. 左下扳手圖示 - Additional Settings - Mp3 Bitrate: 160k
+
+         實測 96k/128k 轉出來的音檔時間長度都不正確，160k/320k 則正常。來源音檔是 128k，故此處使用 160k。
+
+      3. Download Center - 選取 Demucs - 下拉選取 Demucs v4 | htdemucs_6s - 按下載圖示
+      4. CHOOSE PROCESS METHOD: Demucs; CHOOSE DEMUCS MODEL: v4 | htdemucs_6s
 
 ### 2. 建立自己的曲目庫
-  1. 由 [SongsRemixDemo](https://github.com/ChrisTorng/SongsRemixDemo) - Use this template - Create a new repository
-  2. Reposity name 輸入欲建立之曲目庫的英數代碼名稱 - Create repository
-  3. 綠色 Code 下拉 - 按 複製 圖示
-  4. 開啟命令列，切換到欲建立曲目庫之上層目錄
-  5. `git clone` 後面貼上目標網址再執行，格式為 `https://github.com/(自己 GitHub 帳號)/(自己曲目庫代碼).git`
+  1. 註冊免費 GitHub 帳號
+  2. 開啟 [SongsRemixDemo](https://github.com/ChrisTorng/SongsRemixDemo) - Use this template - Create a new repository
+  3. Reposity name 輸入欲建立之曲目庫的英數代碼名稱 - Create repository
+  4. 綠色 Code 下拉 - 按 複製 圖示
+  5. 開啟命令列，切換到欲建立曲目庫之上層目錄
+  6. 輸入 `git clone ` 後面貼上目標網址再執行，格式為 `https://github.com/(自己 GitHub 帳號代碼)/(自己曲目庫代碼).git`
 
 ### 3. 本機測試
   1. 命令列 `cd` 進入曲目庫目錄
@@ -68,21 +78,36 @@
 ## 之後每一次加曲目
 
 ### 1. 取得原始音檔
-  1. 執行 youtube_dl - 貼上所有 YouTube 網址 - ... - 選擇輸出資料夾為曲目庫資料夾 - default - 選擇 mp3 - Add - 右下角 Start
-  2. 將所有來源 mp3 檔名變更為預定顯示的文字
+  1. 執行 yt_dlg - 貼上所有 YouTube 網址 (若為播放清單，則會全部一次下載)
+  2. ... - 選擇輸出資料夾為曲目庫資料夾 - default - 選擇 mp3 - Add - 右下角 Start
+  3. 將所有來源 mp3 檔名變更為預定顯示的文字
 
 ### 2. 製作分軌
-  1. 執行 Ultimate Vocal Remover
-  2. Select Input - 選擇所有來源 mp3 檔
-  3. Select Output - 選擇曲目庫資料夾
-  4. 若有獨立顯示卡 (如電競主機/筆電) 選擇 GPU Conversion 執行快很多。若執行出錯則取消此項
-  5. Start Processing
+  依先前安裝的工具，以下二擇一:
+  * 命令列 Demucs
+    1. 切換到曲目庫資料夾
+    2. `python -m demucs -n htdemucs_6s --mp3 --mp3-bitrate 128 "(音檔名稱)"`
+
+       (實測使用符合來源檔案之 128K 位元速率無異常)
+
+    3. 如果安裝 GPU 版本但執行有錯誤，則加上 -d cpu 參數改用 CPU (速度慢) 試試看。若還有任何問題請查閱 [Demucs 官網說明](https://github.com/facebookresearch/demucs#requirements)
+    4. 將所有 mp3 檔案均依上法轉換
+
+  * Windows: Ultimate Vocal Remover
+    1. Select Input - 選擇所有來源 mp3 檔
+    2. Select Output - 選擇曲目庫資料夾
+    3. 若有 4GB 以上獨立顯示卡 (如電競主機/筆電) 選擇 GPU Conversion 執行快很多。若執行出錯則取消此項
+    4. Start Processing
+
+    CHOOSE PROCESS METHOD 選擇 Audio Tools 後，CHOOSE AUDIO TOOL 還有 Change Pitch (移調) 功能可用，正值代表升調半音數，負值為降調半音數。
 
 ### 3. 檔案搬移與更名
   1. 於曲目庫資料夾開啟命令列
-  2. 執行 `python SongsRename.py`
+  2. 以下二擇一:
+     * Demucs 命令列工具轉換者，執行 `python demucs_move.py`
+     * Ultimate Vocal Remover 轉換者，執行 `python uvr_move.py`
   
-  它會將目前資料夾中所有 mp3 檔，依曲目檔名自動搬移至新建立之資料夾，並僅留樂器名稱檔名 (必須全小寫，不含複數結尾 s)，來源檔案則改名為 original.mp3
+  它會將目前資料夾中所有 mp3 檔 (以及分軌檔)，依曲目檔名自動搬移至新建立之資料夾，並僅留樂器名稱檔名 (必須全小寫，不含複數結尾 s)，來源檔案則改名為 original.mp3
 
 ### 4. 製作波形圖
   執行 `python waveform.py`
@@ -94,7 +119,7 @@
   1. 編輯曲目庫中 `songsList.json`
   2. 複製/修改 `groups` 項目
   3. 更新 `subTitle`。`subTitleUrl` 可事後增加，目前還沒有則清空內容字串
-  4. 修改各曲目之 `name` 必須符合資料夾名稱，`youtubeId` 由 YouTube 網址中之 `v=` 參數後取得
+  4. 修改各曲目之 `name` 必須符合資料夾名稱，`youtubeId` 由 YouTube 網址中之 `v=` 參數後取得 (11 碼英數字元含 -_ 但不含 &)
   5. 同第一次本機測試方法確認
 
 ### 6. 發佈更新
