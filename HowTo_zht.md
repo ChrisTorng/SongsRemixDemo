@@ -14,7 +14,7 @@
   4. 修改並發佈
 
 ### 之後每一次加曲目
-  1. 取得原始音檔
+  1. 取得來源音檔
   2. 製作分軌
   3. 檔案搬移與更名
   4. 製作波形圖
@@ -54,6 +54,7 @@
   4. 綠色 Code 下拉 - 按 複製 圖示
   5. 開啟命令列，切換到欲建立曲目庫之上層目錄
   6. 輸入 `git clone ` 後面貼上目標網址再執行，格式為 `https://github.com/(自己 GitHub 帳號代碼)/(自己曲目庫代碼).git`
+  7. 以純文字編輯器開啟 index.html，修改第六行 title 內容為「自己的曲目庫名稱 - SongsRemix」
 
 ### 3. 本機測試
   1. 命令列 `cd` 進入曲目庫目錄
@@ -77,9 +78,9 @@
 
 ## 之後每一次加曲目
 
-### 1. 取得原始音檔
+### 1. 取得來源音檔
   1. 執行 yt_dlg - 貼上所有 YouTube 網址 (若為播放清單，則會全部一次下載)
-  2. ... - 選擇輸出資料夾為曲目庫資料夾 - default - 選擇 mp3 - Add - 右下角 Start
+  2. ... - 選擇輸出資料夾為曲目庫資料夾 - 點 default 下拉 - 選擇 mp3 - Add - 右下角 Start
   3. 將所有來源 mp3 檔名變更為預定顯示的文字
 
 ### 2. 製作分軌
@@ -96,7 +97,7 @@
   * Windows: Ultimate Vocal Remover
     1. Select Input - 選擇所有來源 mp3 檔
     2. Select Output - 選擇曲目庫資料夾
-    3. 若有 4GB 以上獨立顯示卡 (如電競主機/筆電) 選擇 GPU Conversion 執行快很多。若執行出錯則取消此項
+    3. 若有 4GB VRAM 以上GPU，選擇 GPU Conversion 執行會快很多。若執行出錯則取消此項
     4. Start Processing
 
     CHOOSE PROCESS METHOD 選擇 Audio Tools 後，CHOOSE AUDIO TOOL 還有 Change Pitch (移調) 功能可用，正值代表升調半音數，負值為降調半音數。
