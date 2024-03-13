@@ -28,8 +28,11 @@
 ### 1. 安裝必要工具
   * 以下安裝相關步驟若有問題，請先至各官網檢視詳細說明
   * 安裝 [Python](https://www.python.org/) (工具執行環境)
+    * 開啟命令列執行: `pip install matplotlib pydub`
+
   * 安裝 [Node.js](https://nodejs.org/) (網頁伺服器)
     *  於命令列執行 `npm install -g http-server` 安裝網頁伺服器
+    * Windows 下若遇到路徑錯誤，可建立空資料夾: `mkdir %USERPROFILE%\AppData\Roaming\npm` 後再重試
 
   * 安裝 [Git](https://git-scm.com/) (上傳更新版本)
   * 安裝 [yt-dlg](https://oleksis.github.io/youtube-dl-gui/) (下載音檔)
